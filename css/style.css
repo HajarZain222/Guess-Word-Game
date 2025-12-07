@@ -1,0 +1,199 @@
+:root {
+    --primary-color: #f44336;
+    --org-color: #f79c0d;
+    --green-color: #11b882;
+    --dark-color: #202938;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header .title {
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.guess-game {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+
+    /* Game Area */
+    .game-area {
+        .inputs {
+            > div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                span {
+                    font-size: 25px;
+                    margin-right: 15px;
+                    font-weight: bold;
+                }
+            }
+            .disabled-try {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+            input {
+                width: 50px;
+                height: 50px;
+                border-radius: 5px;
+                text-align: center;
+                font-size: 40px;
+                caret-color: var(--primary-color);
+                background-color: #fff;
+                border: none;
+                border-bottom: 2px solid #333;
+
+                &:focus {
+                    outline-color: #ccc;
+                }
+                &.in-place {
+                    background-color: var(--org-color);
+                    border: var(--org-color);
+                    color: #fff;
+                }
+                &.not-in-place {
+                    background-color: var(--green-color);
+                    border: var(--green-color);
+                    color: #fff;
+                }
+                &.not-in-word {
+                    background-color: var(--dark-color);
+                    border: var(--dark-color);
+                    color: #fff;
+                }
+            }
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto;
+            gap: 10px;
+
+            .check {
+                background-color: var(--org-color);
+                flex: 1;
+            }
+
+            .hint {
+                background-color: var(--green-color);
+                width: fit-content;
+            }
+
+            button {
+                border: none;
+                font-size: 20px;
+                padding: 10px 15px;
+                border-radius: 6px;
+                color: #fff;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            button:disabled {
+                background-color: black;
+                opacity: 0.4;
+                cursor: no-drop;
+            }
+        }
+        .message {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            span {
+                color: var(--primary-color);
+            }
+            p {
+                margin-top: 15px;
+            }
+        }
+    }
+    /* Key Colors */
+    .key-colors {
+        .key-color {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+
+            .key {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                &.in-place {
+                    background-color: var(--org-color);
+                }
+                &.not-in-place {
+                    background-color: var(--green-color);
+                }
+                &.not-in-word {
+                    background-color: var(--dark-color);
+                }
+            }
+
+            .key-desc {
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+    .guess-game {
+        flex-direction: column;
+        gap: 0px;
+        align-items: center;
+    }
+    footer {
+        position: static;
+    }
+}
+
+@media (max-width: 767px) {
+    header .title{
+        font-size: 20px;
+        padding: 15px;
+    }
+    .guess-game {
+        .game-area {
+            .inputs {
+                input {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+        }
+    }
+}
